@@ -64,8 +64,8 @@ print("******************** Estimating CH ********************")
 # NOTE: the sample dates MUST correspond to data in input file
 
 # Set the start and end dates of the estimation sample (format is c(year,quarter))
-sample.start <- c(2005,1)
-sample.end   <- c(2023,4)
+sample.start <- c(2011,1)
+sample.end   <- c(2026,1)
 
 #convert sample.end to date format 
 start.date <- as.Date(paste(sample.start[1],sample.start[2],1,sep="-")) - 0*365.25 # 0*365.25 to avoid leap year issue
@@ -174,7 +174,7 @@ if (use.kappa) {
 # =================
 
 # Read input data from FRBNY website
-ch.data <- read.xlsx("inputData/Holston_Laubach_Williams_CHL.xlsx", sheet="CHL Input Data",
+ch.data <- read.xlsx("inputData/Holston_Laubach_Williams_CHL_0622.xlsx", sheet="CHL Input Data",
             na.strings = ".", colNames=TRUE, rowNames=FALSE, detectDates = TRUE)
 
 # Filter data to match the sample period
@@ -185,7 +185,7 @@ ch.inflation              <- ch.data$inflation
 ch.inflation.expectations <- ch.data$inflation.expectations
 ch.nominal.interest.rate  <- ch.data$interest
 ch.real.interest.rate     <- ch.nominal.interest.rate - ch.inflation.expectations
-ch.covid.indicator        <- ch.data$covid.ind
+ch.covid.indicator        <- ch.data$covid.indicator
 
 
 
